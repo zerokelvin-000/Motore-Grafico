@@ -56,6 +56,14 @@ class Screen{
     updateScreen() {
         ctx.putImageData(this.buffer, 0, 0);
     }
+
+    draw3D(){
+        for(var x=0;x<SH;x++){
+            for(var y=0;y<CW2;y++){
+                this.setPixel(x,y,8)
+            }
+        }
+    }
 }
 
 class Time{
@@ -88,8 +96,20 @@ class Player{
         if(this.keys.sl==1){console.log("strafe right")}
         
         if(this.keys.w==1&&this.keys.m==1){console.log("look up")}
-        if(this.keys.a==1&&this.keys.m==1){console.log("left")}
-        if(this.keys.s==1&&this.keys.m==1){console.log("left")}
-        if(this.keys.d==1&&this.keys.m==1){console.log("left")}
+        if(this.keys.a==1&&this.keys.m==1){console.log("look down")}
+        if(this.keys.s==1&&this.keys.m==1){console.log("move up")}
+        if(this.keys.d==1&&this.keys.m==1){console.log("move down")}
     }
 }
+
+class Game{
+    constructor(){
+        this.tick
+        this.screen = new Screen(CW, CH)
+        this.player = new Player
+    }
+}
+
+game = new Game
+game.screen.draw3D()
+game.screen.update()
